@@ -1,0 +1,27 @@
+services:
+    PhpMob\CmsBundle\Form\Type\TemplateType:
+        arguments:
+            - "%phpmob.model.template.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }
+
+    PhpMob\CmsBundle\Form\Type\TemplateChoiceType:
+        arguments:
+            - "@phpmob.repository.template"
+        tags:
+            - { name: form.type }
+
+    PhpMob\CmsBundle\Form\Type\PageType:
+        arguments:
+            - "%phpmob.model.page.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }
+
+    PhpMob\CmsBundle\Form\Type\PageTranslationType:
+        arguments:
+            - "%phpmob.model.page_translation.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }

@@ -1,0 +1,13 @@
+parameters:
+    phpmob.fm_elfinder.lang: "en"
+    phpmob.fm_elfinder.tmp_path_private: "%kernel.project_dir%/public/thumbnail"
+    phpmob.fm_elfinder.tmp_path_public: "%kernel.project_dir%/public/thumbnail"
+    phpmob.fm_elfinder.url_private: "media/cache/resolve/strip/private"
+    phpmob.fm_elfinder.url_public: "media/cache/resolve/strip/public"
+    phpmob.fm_elfinder.asset_path: "/public/assets"
+
+imports:
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_resource.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/main.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/twig.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/fos_ck_editor.yml" }

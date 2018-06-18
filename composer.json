@@ -1,0 +1,34 @@
+{
+  "name": "phpmob/cms-bundle",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "autoload": {
+    "psr-4": {
+      "PhpMob\\CmsBundle\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.1",
+    "friendsofsymfony/ckeditor-bundle": "^1.1",
+    "helios-ag/fm-elfinder-bundle": "^8",
+    "sylius/locale-bundle": "^1.2",
+    "sylius/resource-bundle": "^1.2",
+    "symfony/yaml": "^3.4|^4.1",
+    "twig/twig": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.6",
+    "phpspec/phpspec": "^4.0"
+  },
+  "suggest": {
+  },
+  "config": {
+    "sort-packages": true,
+    "bin-dir": "bin"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.2-dev"
+    }
+  }
+}

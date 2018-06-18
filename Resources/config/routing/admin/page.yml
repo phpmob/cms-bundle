@@ -1,0 +1,40 @@
+sylius_page_index:
+    path: /pages
+    methods: [ GET ]
+    defaults:
+        _controller: sylius.controller.page:indexAction
+        _sylius:
+            template: base/crud/index.html.twig
+            grid: admin_page_grid
+            vars:
+                icon: far fa-file-alt
+
+sylius_page_create:
+    path: /pages/create
+    methods: [ GET, POST ]
+    defaults:
+        _controller: sylius.controller.page:createAction
+        _sylius:
+            form: PhpMob\CmsBundle\Form\Type\PageType
+            template: base/crud/create.html.twig
+            vars:
+                templates:
+                    form: '@PhpMobCms/Page/form.html.twig'
+
+sylius_page_update:
+    path: /pages/{id}/update
+    methods: [ GET, PATCH, PUT ]
+    defaults:
+        _controller: sylius.controller.page:updateAction
+        _sylius:
+            form: PhpMob\CmsBundle\Form\Type\PageType
+            template: base/crud/update.html.twig
+            vars:
+                templates:
+                    form: '@PhpMobCms/Page/form.html.twig'
+
+sylius_page_delete:
+    path: /pages/{id}/delete
+    methods: [ DELETE ]
+    defaults:
+        _controller: sylius.controller.page:deleteAction
