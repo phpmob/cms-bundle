@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace PhpMob\CmsBundle\Model;
 
+use Gedmo\Blameable\Traits\Blameable;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -22,6 +23,7 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
  */
 class Page implements PageInterface
 {
+    use Blameable;
     use ToggleableTrait;
     use TimestampableTrait;
     use TranslatableTrait {

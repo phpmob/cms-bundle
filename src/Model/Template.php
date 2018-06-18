@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace PhpMob\CmsBundle\Model;
 
+use Gedmo\Blameable\Traits\Blameable;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 
 class Template implements TemplateInterface
 {
+    use Blameable;
     use TimestampableTrait;
 
     /**
