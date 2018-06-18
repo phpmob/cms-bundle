@@ -1,2 +1,10 @@
 imports:
     - { resource: "services/**" }
+
+services:
+    phpmob.locale.add_defined_translation:
+        class: PhpMob\CmsBundle\Translation\AddDefinedTranslation
+        public: true
+        arguments:
+            - '@sylius.context.locale'
+            - '@translator'
