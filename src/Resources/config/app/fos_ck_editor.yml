@@ -1,4 +1,6 @@
 fos_ck_editor:
+    autoload: true
+    async: false
     default_config: default
     configs:
         default:

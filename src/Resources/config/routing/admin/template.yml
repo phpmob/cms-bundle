@@ -1,40 +1,40 @@
-sylius_template_index:
+phpmob_template_index:
     path: /templates
     methods: [ GET ]
     defaults:
-        _controller: sylius.controller.template:indexAction
+        _controller: phpmob.controller.template:indexAction
         _sylius:
             template: base/crud/index.html.twig
             grid: admin_template_grid
             vars:
                 icon: fas fa-code
 
-sylius_template_create:
+phpmob_template_create:
     path: /templates/create
     methods: [ GET, POST ]
     defaults:
-        _controller: sylius.controller.template:createAction
+        _controller: phpmob.controller.template:createAction
         _sylius:
             form: PhpMob\CmsBundle\Form\Type\TemplateType
             template: base/crud/create.html.twig
             vars:
                 templates:
-                    form: '@PhpMobCms/Template/form.html.twig'
+                    form: '@PhpMobCms/Template/_form.html.twig'
 
-sylius_template_update:
+phpmob_template_update:
     path: /templates/{id}/update
     methods: [ GET, PATCH, PUT ]
     defaults:
-        _controller: sylius.controller.template:updateAction
+        _controller: phpmob.controller.template:updateAction
         _sylius:
             form: PhpMob\CmsBundle\Form\Type\TemplateType
             template: base/crud/update.html.twig
             vars:
                 templates:
-                    form: '@PhpMobCms/Template/form.html.twig'
+                    form: '@PhpMobCms/Template/_form.html.twig'
 
-sylius_template_delete:
+phpmob_template_delete:
     path: /templates/{id}/delete
     methods: [ DELETE ]
     defaults:
-        _controller: sylius.controller.template:deleteAction
+        _controller: phpmob.controller.template:deleteAction

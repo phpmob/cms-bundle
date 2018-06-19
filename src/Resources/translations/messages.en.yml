@@ -23,3 +23,15 @@ phpmob:
             type_abstract: Extendable Only
             options: Options
             defined_translations: Translation
+
+    page:
+        headline:
+            index: Pages
+            create: Create new page
+            update: Update page
+
+    template:
+        headline:
+            index: Templates
+            create: Create new template
+            update: Update template
