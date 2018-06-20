@@ -1,10 +1,22 @@
 fos_ck_editor:
     autoload: true
     async: false
-    default_config: default
+    default_config: phpmob_cms
     configs:
-        default:
-            toolbar: standard
+        phpmob_cms:
+            toolbar: phpmob_cms
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters:
                 instance: phpmob_cms
+    toolbars:
+        configs:
+            phpmob_cms:
+                - '@full.basic_styles'
+                - '@standard.paragraph'
+                - ['PasteText', 'PasteFromWord']
+                - '@standard.links'
+                - '@standard.insert'
+                - '@full.tools'
+                - '/'
+                - '@full.styles'
+                - '@standard.document'

@@ -1,32 +1,30 @@
-<div class="row">
-    <div class="col-2">
-        <nav class="nav nav-pills flex-column">
-            <a class="nav-link active" data-toggle="pill" href="#page-content">{{ 'Content' }}</a>
-            <a class="nav-link" data-ace-mode="javascript" data-ace-id="{{ form.script.vars.id }}" data-toggle="pill" href="#page-script">
-                {{ form.script.vars.label|trans }}
+<div class="card">
+    <nav class="nav nav-tabs">
+        <a class="nav-link active" data-toggle="tab" href="#x-page-content">
+            {{ 'Contents' }}
+        </a>
+        {% for key in ['script', 'style', 'options', 'definedTranslations'] %}
+            <a class="nav-link" data-toggle="tab" href="#x{{ form[key].vars.id }}">
+                {{ form[key].vars.label|trans }}
             </a>
-            <a class="nav-link" data-ace-mode="css" data-ace-id="{{ form.style.vars.id }}" data-toggle="pill" href="#page-style">
-                {{ form.style.vars.label|trans }}
-            </a>
-            <a class="nav-link" data-ace-mode="yaml" data-ace-id="{{ form.options.vars.id }}" data-toggle="pill" href="#page-options">
-                {{ form.options.vars.label|trans }}
-            </a>
-            <a class="nav-link" data-ace-mode="yaml" data-ace-id="{{ form.definedTranslations.vars.id }}" data-toggle="pill" href="#page-defined-translations">
-                {{ form.definedTranslations.vars.label|trans }}
-            </a>
-        </nav>
-    </div>
-    <div class="col-10">
-        <div class="tab-content tab-form">
-            <div class="tab-pane active" id="page-content">
-                {{ form_row(form.enabled, { switch: true }) }}
-                {{ form_row(form.template) }}
+        {% endfor %}
+    </nav>
+    <div class="tab-content">
+        <div class="tab-pane active" id="x-page-content">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-md-2">{{ form_row(form.enabled, { switch: 'success' }) }}</div>
+                    <div class="col-md-10">{{ form_row(form.template) }}</div>
+                </div>
+            </div>
+            <div class="card-body">
                 {{ form_row(form.translations) }}
             </div>
-            <div class="tab-pane" id="page-script">{{ form_row(form.script, { label: false }) }}</div>
-            <div class="tab-pane" id="page-style">{{ form_row(form.style, { label: false }) }}</div>
-            <div class="tab-pane" id="page-options">{{ form_row(form.options, { label: false }) }}</div>
-            <div class="tab-pane" id="page-defined-translations">{{ form_row(form.definedTranslations, { label: false }) }}</div>
         </div>
+        {% for key in ['script', 'style', 'options', 'definedTranslations'] %}
+            <div class="tab-pane" id="x{{ form[key].vars.id }}">
+                {{ form_row(form[key], { label: false }) }}
+            </div>
+        {% endfor %}
     </div>
 </div>
