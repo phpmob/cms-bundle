@@ -1,6 +1,6 @@
 PhpMob\CmsBundle\Model\Page:
     type: mappedSuperclass
-    table: changmin_cms_page
+    table: chang_cms_page
 
     id:
         id:

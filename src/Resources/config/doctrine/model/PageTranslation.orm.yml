@@ -1,6 +1,6 @@
 PhpMob\CmsBundle\Model\PageTranslation:
     type: mappedSuperclass
-    table: changmin_cms_page_translation
+    table: chang_cms_page_translation
 
     id:
         id:

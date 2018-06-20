@@ -1,6 +1,6 @@
 PhpMob\CmsBundle\Model\Template:
     type: mappedSuperclass
-    table: changmin_cms_template
+    table: chang_cms_template
 
     id:
         id:

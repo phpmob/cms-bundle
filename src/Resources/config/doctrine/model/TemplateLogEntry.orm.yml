@@ -1,6 +1,6 @@
 PhpMob\CmsBundle\Model\TemplateLogEntry:
     type: mappedSuperclass
-    table: changmin_cms_template_log_entry
+    table: chang_cms_template_log_entry
 
     id:
         id:
