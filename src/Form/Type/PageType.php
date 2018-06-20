@@ -13,11 +13,10 @@ declare(strict_types=1);
 
 namespace PhpMob\CmsBundle\Form\Type;
 
+use PhpMob\AceBundle\Form\Type\AceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class PageType extends AbstractResourceType
@@ -42,12 +41,14 @@ class PageType extends AbstractResourceType
                 'placeholder' => 'phpmob.form.page.template_select',
                 'required' => false,
             ])
-            ->add('script', TextareaType::class, [
+            ->add('script', AceType::class, [
                 'label' => 'phpmob.form.page.script',
+                'mode' => 'javascript',
                 'required' => false,
             ])
-            ->add('style', TextareaType::class, [
+            ->add('style', AceType::class, [
                 'label' => 'phpmob.form.page.style',
+                'mode' => 'css',
                 'required' => false,
             ])
             ->add('options', YamlType::class, [

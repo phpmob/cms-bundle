@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace PhpMob\CmsBundle\Form\Type;
 
+use PhpMob\AceBundle\Form\Type\AceType;
 use PhpMob\CmsBundle\Model\TemplateInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -40,8 +40,9 @@ class TemplateType extends AbstractResourceType
                 'label' => 'phpmob.form.template.name',
                 'required' => true,
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', AceType::class, [
                 'label' => 'phpmob.form.template.content',
+                'mode' => 'twig',
                 'required' => true,
             ])
             ->add('options', YamlType::class, [

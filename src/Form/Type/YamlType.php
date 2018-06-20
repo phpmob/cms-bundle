@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace PhpMob\CmsBundle\Form\Type;
 
+use PhpMob\AceBundle\Form\Type\AceType;
 use PhpMob\CmsBundle\Form\DataTransformer\YamlTransformer;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,9 +38,7 @@ class YamlType extends AbstractType
     {
         $resolver->setDefaults(array(
             'inline_level' => 10,
-            'attr' => [
-                'data-code-mirror-mode' => 'yaml',
-            ],
+            'mode' => 'yaml',
         ));
     }
 
@@ -49,6 +47,6 @@ class YamlType extends AbstractType
      */
     public function getParent()
     {
-        return TextareaType::class;
+        return AceType::class;
     }
 }
