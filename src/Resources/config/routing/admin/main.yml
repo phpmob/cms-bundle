@@ -1,5 +1,7 @@
 phpmob_admin_pages:
+    prefix: /pages
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/page.yml"
 
 phpmob_admin_templates:
+    prefix: /templates
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/template.yml"

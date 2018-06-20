@@ -1,5 +1,5 @@
 phpmob_page_index:
-    path: /pages
+    path: /
     methods: [ GET ]
     defaults:
         _controller: phpmob.controller.page:indexAction
@@ -10,7 +10,7 @@ phpmob_page_index:
                 icon: far fa-file-alt
 
 phpmob_page_create:
-    path: /pages/create
+    path: /create
     methods: [ GET, POST ]
     defaults:
         _controller: phpmob.controller.page:createAction
@@ -22,7 +22,7 @@ phpmob_page_create:
                     form: '@PhpMobCms/Page/_form.html.twig'
 
 phpmob_page_update:
-    path: /pages/{id}/update
+    path: /{id}/update
     methods: [ GET, PATCH, PUT ]
     defaults:
         _controller: phpmob.controller.page:updateAction
@@ -34,7 +34,18 @@ phpmob_page_update:
                     form: '@PhpMobCms/Page/_form.html.twig'
 
 phpmob_page_delete:
-    path: /pages/{id}/delete
+    path: /{id}/delete
     methods: [ DELETE ]
     defaults:
         _controller: phpmob.controller.page:deleteAction
+
+phpmob_page_toggle:
+    path: /{id}/toggle
+    methods: [ PATCH ]
+    defaults:
+        _controller: phpmob.controller.page:updateAction
+        _sylius:
+            form:
+                type: Chang\AdminUser\Form\Type\ToggleResourceType
+                options:
+                    data_class: '%phpmob.model.page.class%'

@@ -10,13 +10,14 @@ sylius_grid:
                 createdAt: desc
             fields:
                 enabled:
-                    type: tpl
-                    label: Enabled
+                    type: toggle
+                    label: chang.ui.enabled
                     sortable: ~
                     options:
-                        template: "@ChangMin/Grid/Field/enabled.html.twig"
-                        align: center
-                        width: 80px
+                        route: phpmob_page_toggle
+                        parameters: { id: '@id' }
+                        on_label: 'chang.ui.enabled'
+                        off_label: 'chang.ui.disabled'
                 title:
                     type: text
                     label: Title

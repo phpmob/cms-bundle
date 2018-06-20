@@ -1,5 +1,5 @@
 phpmob_template_index:
-    path: /templates
+    path: /
     methods: [ GET ]
     defaults:
         _controller: phpmob.controller.template:indexAction
@@ -10,7 +10,7 @@ phpmob_template_index:
                 icon: fas fa-code
 
 phpmob_template_create:
-    path: /templates/create
+    path: /create
     methods: [ GET, POST ]
     defaults:
         _controller: phpmob.controller.template:createAction
@@ -22,7 +22,7 @@ phpmob_template_create:
                     form: '@PhpMobCms/Template/_form.html.twig'
 
 phpmob_template_update:
-    path: /templates/{id}/update
+    path: /{id}/update
     methods: [ GET, PATCH, PUT ]
     defaults:
         _controller: phpmob.controller.template:updateAction
@@ -34,7 +34,7 @@ phpmob_template_update:
                     form: '@PhpMobCms/Template/_form.html.twig'
 
 phpmob_template_delete:
-    path: /templates/{id}/delete
+    path: /{id}/delete
     methods: [ DELETE ]
     defaults:
         _controller: phpmob.controller.template:deleteAction
