@@ -4,7 +4,7 @@ phpmob_page_index:
     defaults:
         _controller: phpmob.controller.page:indexAction
         _sylius:
-            template: base/crud/index.html.twig
+            template: '@chang/crud/index.html.twig'
             grid: admin_page_grid
             vars:
                 icon: far fa-file-alt
@@ -16,7 +16,7 @@ phpmob_page_create:
         _controller: phpmob.controller.page:createAction
         _sylius:
             form: PhpMob\CmsBundle\Form\Type\PageType
-            template: base/crud/create.html.twig
+            template: '@chang/crud/create.html.twig'
             vars:
                 templates:
                     form: '@PhpMobCms/Page/_form.html.twig'
@@ -28,7 +28,7 @@ phpmob_page_update:
         _controller: phpmob.controller.page:updateAction
         _sylius:
             form: PhpMob\CmsBundle\Form\Type\PageType
-            template: base/crud/update.html.twig
+            template: '@chang/crud/update.html.twig'
             vars:
                 templates:
                     form: '@PhpMobCms/Page/_form.html.twig'
