@@ -44,15 +44,30 @@ sylius_grid:
                     label: Updated At
                     sortable: ~
             filters:
-                search:
+                title:
                     type: string
-                    label: Search
+                    label: Title
                     options:
                         default: true
                         fields:
                             - translation.title
+                body:
+                    type: string
+                    label: Body
+                    options:
+                        fields:
                             - translation.body
+                metaDescription:
+                    type: string
+                    label: Meta Description
+                    options:
+                        fields:
                             - translation.metaDescription
+                metaKeywords:
+                    type: string
+                    label: Meta Keywords
+                    options:
+                        fields:
                             - translation.metaKeywords
             actions:
                 main:
