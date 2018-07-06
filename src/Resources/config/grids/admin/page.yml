@@ -5,6 +5,9 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%phpmob.model.page.class%"
+                    repository:
+                        method: createLocaledQueryBuilder
+                        arguments: [ 'expr:service("sylius.context.locale").getLocaleCode()' ]
             limits: [20]
             sorting:
                 createdAt: desc
