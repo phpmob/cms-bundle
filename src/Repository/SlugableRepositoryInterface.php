@@ -19,9 +19,8 @@ interface SlugableRepositoryInterface
 {
     /**
      * @param string $slug
-     * @param null|string $locale
      *
      * @return null|object|SlugAwareInterface
      */
-    public function findBySlug(string $slug, ?string $locale): ?SlugAwareInterface;
+    public function findOneBySlug(string $slug): ?SlugAwareInterface;
 }
