@@ -1,6 +1,6 @@
 phpmob_cms_page_view:
     path: /{slug}
-    methods: ['GET']
+    methods: [ GET ]
     requirements:
         slug: "[^/]+"
     defaults:
@@ -10,4 +10,6 @@ phpmob_cms_page_view:
             flash: flase
             permission: false
             template: "@PhpMobCms/page.html.twig"
-            repository: findOneBySlug
+            repository:
+                method: findOneBySlug
+                arguments: [ $slug ]
