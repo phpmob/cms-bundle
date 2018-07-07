@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace PhpMob\CmsBundle\Doctrine\ORM;
 
 use Doctrine\ORM\QueryBuilder;
+use PhpMob\CmsBundle\Model\PageTranslationInterface;
 use PhpMob\CmsBundle\Repository\SlugableRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Model\SlugAwareInterface;
@@ -23,21 +24,27 @@ class PageRepository extends EntityRepository implements SlugableRepositoryInter
     /**
      * {@inheritdoc}
      */
-    public function findBySlug(string $slug, ?string $locale): ?SlugAwareInterface
+    public function findOneBySlug(string $slug): ?SlugAwareInterface
     {
-        $queryBuilder = $this->createQueryBuilder('o');
+        $qb = $this->createQueryBuilder('o');
 
-        return $queryBuilder
-            ->join('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+        return $qb
+            ->leftJoin('o.translations', 'translation')
             ->leftJoin('o.template', 'tpl')
             ->addSelect('translation')
             ->addSelect('tpl')
-            ->where($queryBuilder->expr()->eq('translation.slug', ':slug'))
-            ->andWhere($queryBuilder->expr()->eq('o.enabled', ':enabled'))
+            ->where('o.enabled = :enabled')
+            ->andWhere($qb->expr()->exists(
+                $this->_em->createQueryBuilder()
+                    ->select('x')
+                    ->from(PageTranslationInterface::class, 'x')
+                    ->where('x.translatable = o.id')
+                    ->andWhere('x.slug = :slug')
+            ))
             ->setParameter(':slug', $slug)
-            ->setParameter(':locale', $locale)
             ->setParameter(':enabled', true)
-            ->getQuery()->getOneOrNullResult();
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     /**
@@ -50,7 +57,6 @@ class PageRepository extends EntityRepository implements SlugableRepositoryInter
         return $this->createQueryBuilder('o')
             ->join('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->addSelect('translation')
-            ->setParameter('locale', $locale)
-        ;
+            ->setParameter('locale', $locale);
     }
 }

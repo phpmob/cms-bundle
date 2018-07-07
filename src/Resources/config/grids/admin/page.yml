@@ -19,8 +19,8 @@ sylius_grid:
                     options:
                         route: phpmob_page_toggle
                         parameters: { id: '@id' }
-                        on_label: 'chang.ui.enabled'
-                        off_label: 'chang.ui.disabled'
+                        on_label: 'chang.ui.on'
+                        off_label: 'chang.ui.off'
                 title:
                     type: text
                     label: Title

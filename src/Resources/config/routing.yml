@@ -10,6 +10,4 @@ phpmob_cms_page_view:
             flash: flase
             permission: false
             template: "@PhpMobCms/page.html.twig"
-            repository:
-                method: findBySlug
-                arguments: [ $slug, "%locale%" ]
+            repository: findOneBySlug

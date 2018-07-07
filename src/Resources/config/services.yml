@@ -8,3 +8,9 @@ services:
         arguments:
             - '@sylius.context.locale'
             - '@translator'
+
+    chang.locale.translatable_entity_assigner:
+        class: PhpMob\CmsBundle\Translation\TranslatableEntityLocaleAssigner
+        decorates: sylius.translatable_entity_locale_assigner
+        arguments:
+            - '@service_container'

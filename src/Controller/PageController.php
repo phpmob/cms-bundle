@@ -18,7 +18,9 @@ use PhpMob\CmsBundle\Model\DefinedTranslationInterface;
 use PhpMob\CmsBundle\Model\TemplateAwareInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\SlugAwareInterface;
 use Sylius\Component\Resource\ResourceActions;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -43,8 +45,17 @@ class PageController extends ResourceController
 
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
-        /** @var DefinedTranslationInterface|TemplateAwareInterface|ResourceInterface $resource */
+        /** @var DefinedTranslationInterface|TemplateAwareInterface|ResourceInterface|SlugAwareInterface $resource */
         $resource = $this->findOr404($configuration);
+        $slug = $request->attributes->get('slug');
+
+        // redirect to right slug
+        if (/*'findOneBySlug' === $configuration->getRepositoryMethod() && */$slug !== $resource->getSlug()) {
+            $uri = $request->getRequestUri();
+            $uri = str_replace($slug, $resource->getSlug(), urldecode($uri));
+
+            return RedirectResponse::create($uri, 301);
+        }
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $resource);
 
@@ -57,7 +68,7 @@ class PageController extends ResourceController
                 $tpl = $resource->getTemplateName();
                 $options = $template->getOptions();
             } else {
-                $tpl = $configuration->getTemplate(ResourceActions::SHOW.'.html');
+                $tpl = $configuration->getTemplate(ResourceActions::SHOW . '.html');
                 $options = [];
             }
 
