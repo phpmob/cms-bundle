@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace PhpMob\CmsBundle\Doctrine\ORM;
 
 use Doctrine\ORM\QueryBuilder;
-use PhpMob\CmsBundle\Model\PageTranslationInterface;
 use PhpMob\CmsBundle\Repository\SlugableRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Model\SlugAwareInterface;
@@ -27,6 +26,7 @@ class PageRepository extends EntityRepository implements SlugableRepositoryInter
     public function findOneBySlug(string $slug): ?SlugAwareInterface
     {
         $qb = $this->createQueryBuilder('o');
+        $class = $this->_class->getAssociationMapping('translations')['targetEntity'];
 
         return $qb
             ->leftJoin('o.translations', 'translation')
@@ -37,7 +37,7 @@ class PageRepository extends EntityRepository implements SlugableRepositoryInter
             ->andWhere($qb->expr()->exists(
                 $this->_em->createQueryBuilder()
                     ->select('x')
-                    ->from(PageTranslationInterface::class, 'x')
+                    ->from($class, 'x')
                     ->where('x.translatable = o.id')
                     ->andWhere('x.slug = :slug')
             ))
